@@ -7,7 +7,7 @@ Este projeto tem como objetivo fornecer uma plataforma robusta para o monitorame
 
 
 
-# Nossa projeto oferece
+# Nosso projeto oferece
 - Monitoramento em tempo real: Acompanhe o consumo de energia em cada ponto da sua instalação.
 - Análise de dados: Identifique padrões de consumo, picos de demanda e oportunidades de otimização.
 - Alertas inteligentes: Receba notificações sobre eventos críticos e desvios do padrão.
