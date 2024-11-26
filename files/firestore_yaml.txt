@@ -1,0 +1,12 @@
+Firestore
+├── energy-consumption (collection)
+│   ├── device_001 (document)
+│   │   ├── readings (subcollection)
+│   │   │   ├── 2024-11-25T12:00:00Z (document)
+│   │   │   │   ├── value: 42
+│   │   │   │   ├── timestamp: 2024-11-25T12:00:00Z
+│   ├── device_002 (document)
+│   │   ├── readings (subcollection)
+│   │   │   ├── 2024-11-25T12:01:00Z (document)
+│   │   │   │   ├── value: 35
+│   │   │   │   ├── timestamp: 2024-11-25T12:01:00Z
