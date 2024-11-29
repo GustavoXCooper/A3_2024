@@ -13,18 +13,21 @@ let globalToken = null;
 
 // Gera um token customizado ao iniciar o servidor
 async function generateTokenAtStartup() {
-  const uid = 'some-unique-user-id'; // Defina o UID de forma fixa ou dinâmica, conforme necessário
-  globalToken = await generateCustomToken(uid); // Gera e armazena o token
+    const uid = '0000';
+    globalToken = await generateCustomToken(uid); // gera e armazena o token
 }
 
-// Gera o token ao iniciar o servidor
+// gera o token ao iniciar o servidor
 generateTokenAtStartup();
 
-// Usando as rotas do arquivo routes.js
+// para acessar o token gerado
+export const getGlobalToken = () => globalToken;
+
+// usando as rotas do arquivo routes.js
 app.use('/api', routes);
 
-// Inicializa o servidor
+// inicializa o servidor
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`Servidor rodando na porta ${PORT}`);
 });

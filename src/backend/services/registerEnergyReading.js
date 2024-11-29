@@ -1,26 +1,41 @@
 import { db } from '../firebase.js';
 
-async function registerEnergyReading(deviceId, value, timestamp) {
+async function registerEnergyReading(payload) {
     try {
-        console.log(`Registrando leitura: ${deviceId} - ${timestamp} com valor: ${value}`);
-        // caso o timestamp seja um objeto date, converte para string
-        const timestampStr = timestamp instanceof Date ? timestamp.toISOString() : timestamp;
+        const {
+            deviceId,
+            energyConsumption,
+            voltage,
+            current,
+            powerFactor,
+            timestamp,
+        } = payload.body;
+
+        if (!deviceId || !energyConsumption || !timestamp) {
+            throw new Error('Campos obrigatórios estão ausentes!');
+        }
 
         // referência para o documento no Firestore
         const docRef = db
             .collection('energy-consumption')
             .doc(deviceId)
             .collection('readings')
-            .doc(timestampStr);
+            .doc(deviceId);
 
-        // dados a serem salvos
-        const data = { value, timestamp: timestampStr };
+        // dados a serem salvos no Firestore
+        const data = {
+            energyConsumption,
+            voltage,
+            current,
+            powerFactor,
+            timestamp,
+        };
 
         // salva no Firestore
         await docRef.set(data);
-        console.log(`Leitura registrada: ${deviceId} - ${timestampStr}`);
+        console.log(`Leitura registrada para ${deviceId} com sucesso!`);
     } catch (error) {
-        console.error('Erro ao registrar leitura:', error);
+        console.error('Erro ao registrar leitura:', error.message);
         throw error;
     }
 }
