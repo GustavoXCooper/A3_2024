@@ -1,10 +1,15 @@
 import admin from 'firebase-admin';
 import serviceAccount from './monitoramento-de-energia-79a8f-firebase-adminsdk-zesud-86366cc51a.json' assert { type: 'json' };
 
-// Inicializa o Firebase Admin SDK
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-});
+// Verifica se o Firebase já foi inicializado
+if (admin.apps.length === 0) {
+    // Inicializa o Firebase Admin SDK apenas se não tiver sido inicializado anteriormente
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+    });
+} else {
+    console.log('Firebase já inicializado.');
+}
 
 const db = admin.firestore();
 const auth = admin.auth();
