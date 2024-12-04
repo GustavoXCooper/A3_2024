@@ -5,7 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/backend/server.js",
-    "start-reports": "nodemon sendEmail.js"
+    "start-reports": "nodemon sendEmail.js",
+    "start": "pm2 start ecosystem.config.cjs",
+    "stop": "pm2 stop all",
+    "restart": "pm2 restart all",
+    "logs": "pm2 logs"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +25,8 @@
     "jsonwebtoken": "^9.0.2",
     "mqtt": "^5.10.2",
     "node-cron": "^3.0.3",
-    "nodemailer": "^6.9.16"
+    "nodemailer": "^6.9.16",
+    "pm2": "^5.4.3"
   },
   "type": "module",
   "devDependencies": {

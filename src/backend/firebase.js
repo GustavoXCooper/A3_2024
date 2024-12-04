@@ -18,7 +18,7 @@ const auth = admin.auth();
 async function generateCustomToken(uid) {
     try {
         const token = await auth.createCustomToken(uid); // Gera um token customizado com base no UID
-        console.log('Token gerado:', token);
+        console.log('Token gerado com sucesso!');
         return token;
     } catch (error) {
         console.error('Erro ao gerar token:', error);
