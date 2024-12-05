@@ -15,13 +15,13 @@ async function registerEnergyReading(payload) {
             throw new Error('Campos obrigatórios estão ausentes!');
         }
 
-        // Referência para a subcoleção de 'readings' do dispositivo
+        // referencia a subcoleção de readings
         const readingsRef = db
             .collection('energy-consumption')
             .doc(deviceId)
             .collection('readings');
 
-        // Dados a serem salvos no Firestore
+        // dados a serem salvos
         const data = {
             energyConsumption,
             voltage,
@@ -30,8 +30,8 @@ async function registerEnergyReading(payload) {
             timestamp,
         };
 
-        // Adiciona um novo documento com um ID gerado automaticamente
-        await readingsRef.add(data); // Usa 'add' para criar um novo documento
+        // adiciona um novo documento
+        await readingsRef.add(data);
         console.log(`Leitura registrada para ${deviceId} com sucesso!`);
     } catch (error) {
         console.error('Erro ao registrar leitura:', error.message);

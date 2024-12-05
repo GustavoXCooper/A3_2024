@@ -10,5 +10,4 @@ async function simulateWeeklyEmail() {
     }
 }
 
-// Chama a função de simulação de envio
 simulateWeeklyEmail();

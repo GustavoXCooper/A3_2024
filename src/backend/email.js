@@ -1,10 +1,8 @@
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 
-// Carrega o arquivo .env com o caminho correto
 dotenv.config();
 
-// informações requeridas pelo nodemailer
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,

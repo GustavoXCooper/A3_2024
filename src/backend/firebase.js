@@ -1,9 +1,9 @@
 import admin from 'firebase-admin';
 import serviceAccount from './monitoramento-de-energia-79a8f-firebase-adminsdk-zesud-86366cc51a.json' assert { type: 'json' };
 
-// Verifica se o Firebase já foi inicializado
+// verifica se o Firebase já foi inicializado
 if (admin.apps.length === 0) {
-    // Inicializa o Firebase Admin SDK apenas se não tiver sido inicializado anteriormente
+    // inicializa o Firebase Admin SDK  se não tiver sido inicializado ainda
     admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
     });
@@ -14,10 +14,10 @@ if (admin.apps.length === 0) {
 const db = admin.firestore();
 const auth = admin.auth();
 
-// Função para gerar um token customizado
+// gera um token customizado
 async function generateCustomToken(uid) {
     try {
-        const token = await auth.createCustomToken(uid); // Gera um token customizado com base no UID
+        const token = await auth.createCustomToken(uid); //token customizado com base no UID
         console.log('Token gerado com sucesso!');
         return token;
     } catch (error) {
@@ -25,5 +25,4 @@ async function generateCustomToken(uid) {
     }
 }
 
-// Exportação nomeada
 export { db, auth, generateCustomToken };

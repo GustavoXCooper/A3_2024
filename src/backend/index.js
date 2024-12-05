@@ -8,10 +8,10 @@ dotenv.config(); // Carrega as variáveis de ambiente
 const app = express();
 app.use(express.json());
 
-// Variável para armazenar o token gerado
+// p armazenar o token
 let globalToken = null;
 
-// Gera um token customizado ao iniciar o servidor
+// customizado quando inicia o servidor
 async function generateTokenAtStartup() {
     const uid = '0000';
     globalToken = await generateCustomToken(uid); // gera e armazena o token
