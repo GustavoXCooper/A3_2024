@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import registerEnergyReading from './services/registerEnergyReading.js';
-import { db } from './firebase.js';
 
 const router = Router();
 

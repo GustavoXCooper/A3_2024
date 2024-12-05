@@ -96,7 +96,7 @@ export const calculateWeeklyAverage = async () => {
     const now = new Date();
     const subject = `Relatório Semanal de Consumo de Energia - ${format(now, 'dd/MM/yyyy')}`;
     await sendEmail(subject, emailContent);
-    console.log('Relatório semanal enviado com sucesso!');
+    console.log(`[ ${now} ] - Relatório semanal enviado com sucesso!`);
 }
 
 

@@ -32,7 +32,12 @@ const generateEnergyData = (deviceId) => {
         powerFactor: getRandomInRange(0.85, 1),        // fator de potência
     };
 
-    console.log(`Dados gerados para ${deviceId}:`, data);
+    // Converter novamente para um objeto Date, caso queira manipular data/hora:
+    const dateObject = new Date(data.timestamp);
+    const date = dateObject.toISOString().split('T')[0]; // YYYY-MM-DD
+    const hour = dateObject.toTimeString().split(' ')[0]; // HH:mm:ss
+
+    console.log(`[${date} ${hour}] - Dados gerados para ${deviceId}:`, data);
     return data;
 };
 
@@ -40,7 +45,9 @@ const generateEnergyData = (deviceId) => {
 const sendData = async (deviceId) => {
     const data = generateEnergyData(deviceId);
     const token = getGlobalToken();
-
+    const now = new Date();
+    const date = now.toISOString().split('T')[0]; // YYYY-MM-DD
+    const hour = now.toTimeString().split(' ')[0]; // HH:mm:ss
     if (!data) return;
 
     try {
@@ -50,7 +57,8 @@ const sendData = async (deviceId) => {
                 "Content-Type": "application/json"
             }
         });
-        console.log(`Dados enviados com sucesso para ${deviceId}:`, response.status);
+        console.log(`[${date} ${hour}] - Dados enviados com sucesso para ${deviceId}.`);
+        return response;
     } catch (error) {
         console.error(`Erro ao enviar dados para ${deviceId}:`, {
             message: error.message,

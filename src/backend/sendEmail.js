@@ -1,7 +1,7 @@
 import cron from 'node-cron';
 import { calculateWeeklyAverage } from './createEmail.js';
 
-// T enviar o relatório semanal
+// enviar o relatório semanal
 cron.schedule('0 9 * * 4', async () => {
     console.log(`[${new Date().toISOString()}] Enviando relatório semanal...`);
     try {
